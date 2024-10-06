@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تصوير بطاقة الهوية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            direction: rtl;
+        }
+        #videoElement, #canvas {
+            max-width: 90%;
+            margin: 10px;
+        }
+        #captureButtons, #imageNameContainer, #saveContainer {
+            margin: 20px;
+        }
+        #saveImage:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+        /* عناصر الفيديو والـ overlay */
+        #videoContainer {
+            position: relative;
+            display: inline-block;
+        }
+        #videoElement {
+            max-width: 100%;
+        }
+        canvas.drawingCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <!-- إضافة OpenCV.js -->
+    <script async src="https://docs.opencv.org/4.x/opencv.js" type="text/javascript"></script>
+</head>
+<body>
+    <h1>تصوير بطاقة الهوية</h1>
+
+    <div id="captureButtons">
+        <button id="captureFront">التقاط وجه البطاقة</button>
+        <button id="captureBack" disabled>التقاط ظهر البطاقة</button>
+    </div>
+
+    <div id="videoContainer" style="display:none;">
+        <video id="videoElement" autoplay></video>
+        <canvas id="overlay" class="drawingCanvas"></canvas>
+    </div>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <div id="imageNameContainer" style="display:none;">
+        <input type="text" id="imageName" placeholder="أدخل اسم الصورة">
+    </div>
+    <div id="saveContainer" style="display:none;">
+        <button id="saveImage" disabled>حفظ الصورة</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
